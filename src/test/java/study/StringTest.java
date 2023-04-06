@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 
 public class StringTest {
@@ -29,9 +30,11 @@ public class StringTest {
     @DisplayName("요구사항 3")
     void charAt() {
         String data = "abc";
-        assertThat(data.charAt(0)).isEqualTo('a');
-        assertThat(data.charAt(1)).isEqualTo('b');
-        assertThat(data.charAt(2)).isEqualTo('c');
+        assertAll(
+                () -> assertThat(data.charAt(0)).isEqualTo('a'),
+                () -> assertThat(data.charAt(1)).isEqualTo('b'),
+                () -> assertThat(data.charAt(2)).isEqualTo('c')
+        );
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     data.charAt(3);
