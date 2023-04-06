@@ -35,6 +35,12 @@ public class StringTest {
                 () -> assertThat(data.charAt(1)).isEqualTo('b'),
                 () -> assertThat(data.charAt(2)).isEqualTo('c')
         );
+    }
+
+    @Test
+    @DisplayName("Exception Assert Test")
+    void exceptionTest() {
+        String data = "abc";
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> {
                     data.charAt(3);
